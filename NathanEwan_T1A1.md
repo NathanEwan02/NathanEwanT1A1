@@ -130,9 +130,11 @@ Data types are a simply a way of distinguishing and categorizing different types
 
 ## **Q11. Here’s the problem: “There is a restaurant serving a variety of food. The customers want to be able to buy food of their choice. All the staff just quit, how can you build an app to replace them?”**<br></br>
 
-An app to replace a team of restaurant staff would need a class for customers, chefs and waiters. The customer class would contain attributes such as, number of orders, order and customer name. The methods needed for this would be, change order, add to order, subtract from order and change number of orders. The attributes for a waiter class would need, number of orders taken, orders, waiters name, shift time. The methods for this class would need, change order, add number of orders, subtract number of orders, and shift start and ending times. Finally, a Chef class would require instance variables for, chef name, number of order, orders, amount of time to finish order. The methods for the chef class would need methods to change orders, change time taken finish orders, and a method for changing the number of orders.
+An app to replace a team of restaurant staff would need a class for customers, chefs and waiters. The customer class would contain attributes such as, number of orders, order and customer name. The methods needed for this would be, change order, add to order, subtract from order and change number of orders. The attributes for a waiter class would need, number of orders taken, orders, waiters name, shift time. The methods for this class would need, change order, add number of orders, subtract number of orders, and shift start and ending times. Finally, a Chef class would require instance variables for, chef name, number of order, orders, amount of time to finish order. The methods for the chef class would need methods to change orders, change time taken finish orders, and a method for changing the number of orders.<br></br>
 
-## **Q12. Identify and explain the error in the code snippet below that is preventing correct execution of the program**
+## **Q12. Identify and explain the error in the code snippet below that is preventing correct execution of the program**<br></br>
+
+### **Question:**
 
 ```
 celcius = gets
@@ -141,3 +143,193 @@ print "The result is: "
 print fahrenheit
 puts "."
 ```
+
+### **Answer:**
+
+The main issue with the code seen below is that the ‘gets’ method is asking for a string input. So, when the user inputs the number that they want to be converted the variable is set as a string rather than a number, hence integer operations cannot be performed to set the fahrenheit variable as an integer value. To fix this, the Celsius variable should look like this ‘celsius = gets.chomp.to_i’. The ‘.chomp’ method is what removes any newline character from the string and the ‘to_i’ function is what converts the string input to an integer. Additionally, the code could be simplified by replacing the print statements with the following ‘puts “The result is: #{fahrenheit}.”’. <br></br>
+
+## **Q13. The code snippet below looks for the first two elements that are out of order and swaps them; however, it is not producing the correct results. Rewrite the code so that it works correctly.**<br></br>
+
+### **Question:**
+
+```
+arr = [5, 22, 29, 39, 19, 51, 78, 96, 84]
+i = 0
+while (i < arr.size - 1 and arr[i] < arr[i - 1])
+    i = i + 1 end
+puts i
+    arr[i] = arr[i + 1]
+    arr[i + 1] = arr[i]
+```
+
+## **Answer:**
+
+```
+arr = [5, 22, 29, 39, 19, 51, 78, 96, 84]
+i = 0
+while (i < arr.size - 1)
+    if arr[i] < arr[i + 1]
+        i += 1
+    elsif arr[i] > arr[i + 1]
+        arr[i + 1], arr[i] = arr[i], arr[i + 1]
+        #i += 1
+        i = arr.size - 1
+    end
+end
+p arr
+```
+
+<br></br>
+
+## **Q14. Create a flowchart to outline the steps for listing all prime numbers between 1 and 100 (inclusive). Your flowchart should make use of standard conventions for flowcharts to indicate processes, tasks, actions, or operations** <br></br>
+
+![](flow-chart-diagram.jpg)<br></br>
+
+## **Write pseudocode for the process outlined in your flowchart (part 2)**<br></br>
+
+```
+n = 100
+
+for i in (1..n)
+    if i % 2 != 0
+        puts i
+    end
+end
+```
+
+## **Q15. Write pseudocode OR Ruby code for the following problem: You have access to two variables: raining (boolean) and temperature (integer). If it’s raining and the temperature is less than 15 degrees, print to the screen “It’s wet and cold”, if it is less than 15 but not raining print “It’s not raining but cold”. If it’s greater than or equal to 15 but not raining print “It’s warm but not raining”, and otherwise tell them “It’s warm and raining”.**<br></br>
+
+### **Code:**
+
+```
+raining = false
+temperature = 30
+
+if raining == true and temperature < 15
+    puts "It's wet and cold"
+elsif raining == false and temperature < 15
+    puts "It's not raining but cold"
+elsif raining == false and temperature >= 15
+    puts "It's warm but not raining"
+else
+    puts "It's warm and raining"
+end
+```
+
+<br></br>
+
+## **Q 16. Write a program that allows a user to input their skills and then tells them: Their overall "coding skill score" and skills they may want to learn, and how much each one would improve their score**<br></br>
+
+### **Code:**
+
+```
+def main()
+    user_skills = []
+    close_loop = false
+
+    while close_loop == false
+        puts '-'*50
+        puts "Type 'end' once you have entered all your skills "
+        puts "Enter one of your skills: "
+        puts '-'*50
+
+        input = gets.chomp.to_s.upcase
+
+        if input == 'END'
+            close_loop = true
+        else
+            user_skills.append(input)
+        end
+    end
+
+    check_score(user_skills)
+end
+
+def check_score(user_skills)
+    coding_score_board = [
+        {skill: "PYTHON", points: 1},
+        {skill: "RUBY", points: 2},
+        {skill: "BASH", points: 4},
+        {skill: "GIT", points: 8},
+        {skill: "HTML", points: 16},
+        {skill: "TDD", points: 32},
+        {skill: "CSS", points: 64},
+        {skill: "JAVASCRIPT", points: 128}
+    ]
+
+    score = 0
+
+    for items in user_skills
+        coding_score_board.find { |x|
+            if x[:skill] == items
+                score += x[:points]
+            end
+        }
+    end
+
+    puts "-"*100
+    puts "Here is a list of skills we are looking for and how each one can improve your score"
+    puts "-"*100
+
+    for key in coding_score_board
+        puts "#{key[:skill]} will improve score to be #{score + key[:points]}"
+    end
+
+    puts '-'*50
+    puts "Your score is: #{score}"
+end
+
+main()
+```
+
+<br></br>
+
+# Refrence List
+
+Feartherly, K., 2016. ARPANET | Definition, Map, Cold War, First Message, & History. [online] Encyclopedia Britannica. Available at: <https://www.britannica.com/topic/ARPANET> [Accessed 28 August 2021].
+
+Craig, W., 2021. The History of the Internet in a Nutshell: From 1960s to Now. [online] WebFX Blog. Available at: <https://www.webfx.com/blog/web-design/the-history-of-the-internet-in-a-nutshell/> [Accessed 28 August 2021].
+
+the Guardian. 2016. How did email grow from messages between academics to a global epidemic?. [online] Available at: <https://www.theguardian.com/technology/2016/mar/07/email-ray-tomlinson-history> [Accessed 28 August 2021].
+
+Scos.training. n.d. History of TCP/IP. [online] Available at: <https://scos.training/history-of-tcp-ip/> [Accessed 28 August 2021].
+
+Pramatarov, M., 2018. DNS history. When and why was DNS created?. [online] ClouDNS Blog. Available at: <https://www.cloudns.net/blog/dns-history-creation-first/> [Accessed 28 August 2021].
+
+Featherly, K., 2016. ARPANET - A packet of data. [online] Encyclopedia Britannica. Available at: <https://www.britannica.com/topic/ARPANET/A-packet-of-data> [Accessed 28 August 2021].
+
+Williams, L., 2021. IPv4 vs IPv6: What’s the Difference Between IPv4 and IPv6?. [online] Guru99. Available at: <https://www.guru99.com/difference-ipv4-vs-ipv6.html> [Accessed 31 August 2021].
+
+Ellis, M., 2019. How Does a Router Work? A Simple Explanation. [online] MUO. Available at: <https://www.makeuseof.com/tag/technology-explained-how-does-a-router-work/> [Accessed 3 September 2021].
+
+Hunt, C., n.d. TCP/IP Network Administration, 3rd Edition. [online] O’Reilly Online Learning. Available at: <https://www.oreilly.com/library/view/tcpip-network-administration/0596002971/ch01.html> [Accessed 3 September 2021].
+
+Mishra, A., 2020. How HTTP and HTTPS Work?. [online] Medium. Available at: <https://medium.com/swlh/how-http-and-https-work-4c689e1ea369> [Accessed 13 September 2021].
+
+Developer.mozilla.org. 2020. An overview of HTTP - HTTP | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview> [Accessed 14 September 2021].
+
+Emmanuel, O., 2021. How browser rendering works — behind the scenes - LogRocket Blog. [online] LogRocket Blog. Available at: <https://blog.logrocket.com/how-browser-rendering-works-behind-scenes/> [Accessed 13 September 2021].
+
+Yourbasic.org. 2021. Hash tables explained [step-by-step example]. [online] Available at: <https://yourbasic.org/algorithms/hash-tables-explained/> [Accessed 7 September 2021].
+
+Castello, J., n.d. Practical Linked List in Ruby. [online] RubyGuides. Available at: <https://www.rubyguides.com/2017/08/ruby-linked-list/> [Accessed 8 September 2021].
+
+Smith, J., 2021. Compiler vs Interpreter: Complete Difference Between Compiler and Interpreter. [online] Guru99. Available at: <https://www.guru99.com/difference-compiler-vs-interpreter.html> [Accessed 9 September 2021].
+
+Buggy Programmer. 2021. Advantages And Disadvantages Of Compiler And Interpreter - Buggy Programmer. [online] Available at: <https://buggyprogrammer.com/advantages-and-disadvantages-of-compiler-and-interpreter/> [Accessed 8 September 2021].
+
+Basel, K., 2018. Python Pros and Cons. [online] Netguru. Available at: <https://www.netguru.com/blog/python-pros-and-cons> [Accessed 11 September 2021].
+
+Data Flair. 2020. Advantages and Disadvantages of C++. [online] Available at: <https://data-flair.training/blogs/advantages-and-disadvantages-of-cpp/> [Accessed 12 September 2021].
+
+Harrington, D., 2021. Data Security: Importance, Types, and Solutions | Varonis. [online] Inside Out Security. Available at: <https://www.varonis.com/blog/data-security/> [Accessed 14 September 2021].
+
+OAIC. 2014. Mobile privacy: a better practice guide for mobile app developers. [online] Available at: <https://www.oaic.gov.au/privacy/guidance-and-advice/mobile-privacy-a-better-practice-guide-for-mobile-app-developers/> [Accessed 16 September 2021].
+
+Upguard. 2019. Losing Face: Two More Cases of Third-Party Facebook App Data Exposure | UpGuard. [online] Available at: <https://www.upguard.com/breaches/facebook-user-data-leak> [Accessed 16 September 2021].
+
+Muhlberg, B., 2020. Facebook's biggest data breach in 2018. [online] CPO Magazine. Available at: <https://www.cpomagazine.com/data-privacy/facebook-knew-about-the-security-flaw-that-led-to-its-biggest-data-breach-in-2018/> [Accessed 16 September 2021].
+
+Lockstepgroup.com. 2019. 3 Data Breaches That Could’ve Been Prevented (and How). [online] Available at: <https://lockstepgroup.com/blog/3-data-breaches-prevented/> [Accessed 16 September 2021].
+
+Developer.mozilla.org. n.d. Type coercion - MDN Web Docs Glossary: Definitions of Web-related terms | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion> [Accessed 7 September 2021].
