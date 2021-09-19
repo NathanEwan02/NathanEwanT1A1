@@ -22,9 +22,14 @@ Data packets were first proposed as an alternative to sending and receiving data
 
 An IP (Internet Protocol) address is a unique identifier represented as a numerical value used to identify the location of a specific computer or server. When data is transmitted from one computer to another, the data being sent is directed to a unique IP address. IPv4 is an IP address that holds a 32-bit address, this means there are approximately 4 billion unique combinations of IP addresses, however this is not enough for every device to have its own address. IPv6 uses a 128-bit address, providing approximately 3.4 x 10^38 combinations. This is an important development for the internet, as the previous IPv4 would not provide enough addresses for the future of the internet. IPv6 will be crucial to compensate for an increasing population, new business and industries requiring unique server addresses, and as 3rd countries begin to modernize.
 
+The invention of the IP adress was crucial in terms of the development of the internet. Without it, the data would not have a refrence of the intended location and router would not be able to send the data to the correct location. Many of the internet protocols that allow the interent to function the way it does like the Transmission Control Protocol would not work without the implementation of IP adresses.
+
 ### **Routers and Routing:**
 
-Routers are designed to direct the flow of data from one network to the next using the IP address of the data to determine if the data was intended for its own network or a separate network. If the router has determined that the data was not intended for its own network the router will then send the data to another network. The invention and implementation of routing and routers on the internet is a crucial part of how the internet can connect to each network. The internet is essentially a large-scale network connecting each network together without routers information could not be sent or received unless connected to a dedicated cable. <br></br>
+Routers are designed to direct the flow of data from one network to the next using the IP address of the data to determine if the data was intended for its own network or a separate network. If the router has determined that the data was not intended for its own network the router will then send the data to another network. The invention and implementation of routing and routers on the internet is a crucial part of how the internet can connect to each network. The internet is essentially a large-scale network connecting each network together without routers information could not be sent or received unless connected to a dedicated cable.
+
+Routers are an essential part of the internet and without them communication would prove impossible. Inorder to communicate without the use of routers or routing the internet traffic moving from one location to the next would be fixed to a singal connection or a few large connections. This would mean that if a connection was cut due to technical issues or physical problems, the connection would be severed and communication would not continue until the issue is resolved. With the devlopment of routers, the data can go from one location to the next without concern of a disconnection. The data also wouldn't be able find its correct location without routers, it may end up lost along the way to its location.
+<br></br>
 
 ## **Q3. Define the features of the following technologies that are essential in terms of the development of the internet (part 1)** <br></br>
 
@@ -58,15 +63,32 @@ Web browsers have created a way for user-agents to communicate with webservers t
 
 ### **Arrays:**
 
-An array is a data structure used for storing multiple items called elements. Each element in the array has an index starting from index 0, and the items in the array are retrieved using the index of that specific element. An array can also be used to store more than one type of data for example, strings, chars, integers, Booleans and floats. Across all programming languages an array will always have an array name, elements, and data types of those elements. There are several operations you can perform on an array some of which include, insert, delete, update, search and traverse. In the example below …….
+An array is a data structure used for storing multiple items called elements. Each element in the array has an index starting from index 0, and the items in the array are retrieved using the index of that specific element. An array can also be used to store more than one type of data for example, strings, chars, integers, Booleans and floats. Across all programming languages an array will always have an array name, elements, and data types of those elements. There are several operations you can perform on an array some of which include, insert, delete, update, search and traverse. In the example below is a push function being performed on an array.
+
+### **Example:**
+
+```
+arr = [1, 2, 3, 4]
+arr.push(5)      # => [1, 2, 3, 4, 5]
+```
 
 ### **Hashes/Hash Tables:**
 
-A HashMap/Hash table is a data structure that stores information in key-value pairs. The Hash table is like an array, however each item (value) in the array has a key associated with it, so that information can be retrieved more easily by simply sending a request for the key. Each key in a hash table is unique and is indexed by a hash function, which works by taking the key of an associated value in the array and providing it with an index in that array. Therefore, hash tables are used for fast lookup. An example of how a hash table may be implemented in a real-world scenario is ………….
+A HashMap/Hash table is a data structure that stores information in key-value pairs. The Hash table is like an array, however each item (value) in the array has a key associated with it, so that information can be retrieved more easily by simply sending a request for the key. Each key in a hash table is unique and is indexed by a hash function, which works by taking the key of an associated value in the array and providing it with an index in that array. Therefore, hash tables are used for fast lookup. An example of how a hash table may be implemented in a ruby programming language is below.
+
+### **Example:**
+
+```
+hash_arr = [
+    {name: "James", age: 19}
+    {name: "John", age: 34}
+    {name: "Jim", age: 22}
+]
+```
 
 ### **Linked Lists:**
 
-A linked list is a linear data structure that holds multiple items like an array would. However, unlike an array a linked list does not use indexing, so an element can’t be accessed using its index. Instead, each element in the list is linked together and to perform a search you must begin at the ‘head’ and follow the links until the item is found. The reason a developer may choose to use a linked instead of an array is because of the efficiency it provides when inserting or deleting items. Generally, a developer will choose to use an array over a linked list if the items aren’t going to be changed or modified in any way. In the below example …..
+A linked list is a linear data structure that holds multiple items like an array would. However, unlike an array a linked list does not use indexing, so an element can’t be accessed using its index. Instead, each element in the list is linked together and to perform a search you must begin at the ‘head’ and follow the links until the item is found. The reason a developer may choose to use a linked instead of an array is because of the efficiency it provides when inserting or deleting items. Generally, a developer will choose to use an array over a linked list if the items aren’t going to be changed or modified in any way.<br></br>
 
 ## **Q5. Describe the features of interpreters and compilers and how they are different.**<br></br>
 
@@ -118,15 +140,50 @@ There were many potential security risks and practices which were neglected when
 
 ## **Q8. Explain control flow, using an example from the Ruby programming language** <br></br>
 
-Control flow is the order in which statements, methods and instructions are performed within a given program. All programming languages employ control flow into how their code is structured, to give the computer an idea of what goes first. Without the implementation of control flow within programming languages, it would be difficult for programmers to know which line of code would take priority over another at any given time. Loops and iterations may also run forever without a defined structure indicate how and when the program should break out the loop. An example of control flow might be variable set to either true or false followed by an if and else statement. As seen below the control flow begins when the program is encountered with the keyword ‘if’. The control flow will start with this if statement, and if it evaluates to true then it executes, if it does not then the program moves to the next code. It continues to do this until it encounters the ‘end’ statement.<br></br>
+Control flow is the order in which statements, methods and instructions are performed within a given program. All programming languages employ control flow into how their code is structured, to give the computer an idea of what goes first. Without the implementation of control flow within programming languages, it would be difficult for programmers to know which line of code would take priority over another at any given time. Loops and iterations may also run forever without a defined structure indicate how and when the program should break out the loop. An example of control flow might be variable set to either true or false followed by an if and else statement. As seen below the control flow begins when the program is encountered with the keyword ‘if’. The control flow will start with this if statement, and if it evaluates to true then it executes, if it does not then the program moves to the next code. It continues to do this until it encounters the ‘end’ statement.
+
+### **Example:**
+
+```
+num = 5
+if num == 5
+    print "Number is equal to five"
+elsif num == 10
+    print "Number is equal to ten"
+else
+    print "Number is not equal to five or ten
+```
+
+<br></br>
 
 ## **Q9. Explain type coercion**<br></br>
 
-Type coercion is an automatic conversion that changes a value from its original data type to a new type of data. Type coercion is different from ‘type conversion’ because type coercion implicitly change data depending on the operation used on the values. For example, if two variables are assigned as different data types, one as a string and the other as an integer. When an addition operation is performed on those two variables, the programming language will implicitly interpret the integer as a string and perform a string concatenation. Note that the variable has not been explicitly changed and will remain an integer but has been interpreted differently given the context. Another example is using an operation such as multiplication on float and integer value. The integer will be interpreted as a float so that the output is a float value.<br></br>
+Type coercion is an automatic conversion that changes a value from its original data type to a new type of data. Type coercion is different from ‘type conversion’ because type coercion implicitly change data depending on the operation used on the values. For example, if two variables are assigned as different data types, one as a string and the other as an integer. When an addition operation is performed on those two variables, the programming language will implicitly interpret the integer as a string and perform a string concatenation. Note that the variable has not been explicitly changed and will remain an integer but has been interpreted differently given the context. Another example is using an operation such as multiplication on float and integer value. The integer will be interpreted as a float so that the output is a float value.
+
+### **Example:**
+
+```
+1.to_s      #=> "1"
+"1".to_i     #=> 1
+"hello".to_i    #=> 0
+```
+
+<br></br>
 
 ## **Q10. Explain data types, using examples**<br></br>
 
-Data types are a simply a way of distinguishing and categorizing different types of data. There are many different types of data but, the most commonly used five are, chars, strings, integers, floats, and Boolean values. An integer is a numerical value that does not contain decimals and can be positive, negative or zero. A float (also known as a floating-point number) is an integer that can contain decimal points. Both integers and floats can be manipulated with mathematical operations (addition, subtraction, multiplication, division, etc). Chars are alphanumeric values that contain a single letter, number or symbol. A string is a list of characters of any length containing alphanumeric values. Lastly, a Boolean is a binary data type that can be represented as only one of two values. Generally, most programming languages (like ruby) will use true, or false as their Boolean values.<br></br>
+Data types are a simply a way of distinguishing and categorizing different types of data. There are many different types of data but, the most commonly used five are, chars, strings, integers, floats, and Boolean values. An integer is a numerical value that does not contain decimals and can be positive, negative or zero. A float (also known as a floating-point number) is an integer that can contain decimal points. Both integers and floats can be manipulated with mathematical operations (addition, subtraction, multiplication, division, etc). Chars are alphanumeric values that contain a single letter, number or symbol. A string is a list of characters of any length containing alphanumeric values. Lastly, a Boolean is a binary data type that can be represented as only one of two values. Generally, most programming languages (like ruby) will use true, or false as their Boolean values.
+
+### **Example:**
+
+```
+int = 1 + 2
+float = 3.5
+bool = false
+string = "Hello there"
+```
+
+<br></br>
 
 ## **Q11. Here’s the problem: “There is a restaurant serving a variety of food. The customers want to be able to buy food of their choice. All the staff just quit, how can you build an app to replace them?”**<br></br>
 
